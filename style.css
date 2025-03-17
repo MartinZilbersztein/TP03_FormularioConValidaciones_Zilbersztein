@@ -4,14 +4,20 @@
 
 
 
-
-body{
-    background-color: blue;
- }
+h1{
+    font-size:200%;
+}
+.text-center{
+    margin-bottom:1rem;
+}
 button{
     width:100%;
 }
 .col-4{
     background-color: white;
     border-radius:5px;
+}
+.aviso{
+    color:red;
+    font-size:1rem;
 }
