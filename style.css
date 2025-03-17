@@ -1,15 +1,17 @@
-.pagina{
-    display:flex;
-}
-.pagina .izquierda{
-}
-.pagina .derecha{
+/* *{
+    border: 1px solid black;
+} */
 
+
+
+
+body{
+    background-color: blue;
+ }
+button{
+    width:100%;
 }
-.titulo{
-    font-family: sans-serif;
-    text-align: center;
-}
-.derecha{
-    background-color:aqua;
+.col-4{
+    background-color: white;
+    border-radius:5px;
 }
