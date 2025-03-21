@@ -6,6 +6,17 @@ const inputEmail = document.getElementById('email');
 let contrasena, contrasena2;
 let nombreValido = false, emailValido = false, contrasenaValida = false, contrasenasCoinciden = false;
 
+const contieneNumero = (contrasena) => {
+    return /\d/.test(contrasena);
+}
+
+const contieneLetra = (contrasena) => {
+    let regExp = /[a-zA-Z]/g, funciono = false;
+    if ((regExp.test(contrasena))) funciono = true;
+    return funciono;
+}
+
+
 inputNombre.onchange = function()
 {
     const feedbackElement = document.getElementById('respuestaNombre');
@@ -38,9 +49,9 @@ inputContrasena.onchange = function()
 {
     const feedbackElement = document.getElementById('respuestaContrasena');
     contrasena = inputContrasena.value;
-    if (contrasena.length < 8)
+    if (contrasena.length < 8 || !contieneNumero(contrasena) || !contieneLetra(contrasena))
     {
-        feedbackElement.textContent = "La contraseña debe contener, al menos, ocho caracteres."
+        feedbackElement.textContent = "La contraseña debe contener, al menos, ocho caracteres, un número y una letra."
         contrasenaValida = false;
     }
     else 
@@ -68,9 +79,20 @@ inputContrasena2.onchange = function()
 }
 
 formulario.addEventListener('submit', function(){
+    const alerta = document.getElementById('alerta');
     if (!nombreValido || !emailValido || !contrasenaValida || !contrasenasCoinciden)
     {
         event.preventDefault();
+        alerta.classList.add("alert-danger");
+        alerta.classList.remove("alert-success");
+    }
+    else
+    {
+        alerta.classList.add("alerta-success");
+        alerta.classList.remove("alerta-danger");
     }
 })
+
+
+
 

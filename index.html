@@ -10,12 +10,15 @@
 </head>
 <body>
     
-    <div class="text-center">
+    <div class="text-center mt-5">
         <h1>Te damos la bienvenida</h1>
     </div>
         <div class="row justify-content-center">
             <div class="col-4">
                 <form id="formulario">
+                    <div id="alerta" class="alert hidden" role="alert">
+                        A simple danger alert—check it out!
+                      </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nombre completo</label>
                         <input type="nombre" class="form-control" id="nombre" aria-describedby="emailHelp">
@@ -36,9 +39,11 @@
                         <input type="password" class="form-control" id="contrasena2">
                         <p class="aviso" id="respuestaContrasena2"></p>
                     </div>
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
-                    </form>
-                </div>
+                        <div class="text-center boton">
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                        </div>
+                </form>
+                
             </div>
         </div>
      

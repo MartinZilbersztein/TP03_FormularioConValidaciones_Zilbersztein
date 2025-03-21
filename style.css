@@ -2,10 +2,16 @@
     border: 1px solid black;
 } */
 
+body{
+    background-color: beige !important;
+}
 
-
+.hidden{
+    display:none;
+}
 h1{
     font-size:200%;
+    margin:10%;
 }
 .text-center{
     margin-bottom:1rem;
@@ -13,11 +19,32 @@ h1{
 button{
     width:100%;
 }
-.col-4{
+.col-4 {
     background-color: white;
-    border-radius:5px;
+    border-radius: 5px;
+    width: 90%;
+    padding: 1.5rem; 
+    box-shadow: 0 2px 2px rgba(1, 0, 0, 0.1); 
+}
+.mb-3{
+    margin: 0 auto;
+    margin-top:6%;
+    width:90%;
+}
+.boton{
+    margin: 0 auto;
+    width:90%;
+    margin-bottom:4%;
+    margin-top:5%;
+}
+.form-label{
+    font-weight: bolder;
+    font-size:120%;
 }
 .aviso{
     color:red;
     font-size:1rem;
+}
+.alert{
+
 }
