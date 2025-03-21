@@ -80,17 +80,20 @@ inputContrasena2.onchange = function()
 
 formulario.addEventListener('submit', function(){
     const alerta = document.getElementById('alerta');
+    event.preventDefault();
     if (!nombreValido || !emailValido || !contrasenaValida || !contrasenasCoinciden)
     {
-        event.preventDefault();
         alerta.classList.add("alert-danger");
         alerta.classList.remove("alert-success");
+        alerta.innerHTML = "¡Ha habido un error!";
     }
     else
     {
-        alerta.classList.add("alerta-success");
-        alerta.classList.remove("alerta-danger");
+        alerta.classList.add("alert-success");
+        alerta.classList.remove("alert-danger");
+        alerta.innerHTML = "¡Te has registrado correctamente!";
     }
+    alerta.classList.remove("hidden");
 })
 
 
