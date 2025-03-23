@@ -1,3 +1,4 @@
+
 const inputContrasena = document.getElementById('contrasena');
 const inputContrasena2 = document.getElementById('contrasena2');
 const formulario = document.getElementById('formulario');
@@ -5,7 +6,42 @@ const inputNombre = document.getElementById('nombre');
 const inputEmail = document.getElementById('email');
 let contrasena, contrasena2;
 let nombreValido = false, emailValido = false, contrasenaValida = false, contrasenasCoinciden = false;
-const usuarios = localStorage.getItem("usuarios");
+var objetos;
+const verUsuarios = () =>{
+    const listaUsuarios = document.getElementById('listaUsuarios');
+    objetos = JSON.parse(localStorage.getItem("usuarios"));
+    if (objetos != null)
+    {
+        objetos.forEach(element => {
+                let usuarioDiv = document.createElement("div");
+                usuarioDiv.classList.add("usuario");
+            
+                let nombreP = document.createElement("p");
+                nombreP.innerText = `Nombre: ${element.Nombre}`;
+            
+                let emailP = document.createElement("p");
+                emailP.innerText = `Email: ${element.Email}`;
+            
+                let contrasenaP = document.createElement("p");
+                contrasenaP.innerText = `Contraseña: ${element.Contrasena}`;
+            
+                usuarioDiv.appendChild(nombreP);
+                usuarioDiv.appendChild(emailP);
+                usuarioDiv.appendChild(contrasenaP);
+            
+                listaUsuarios.appendChild(usuarioDiv);
+        });
+    }
+    else
+    {
+        listaUsuarios.textContent = "";
+    }
+}
+const borrarDatos = () =>{
+    localStorage.clear();
+    verUsuarios();
+}
+verUsuarios();
 
 const contieneNumero = (contrasena) => {
     return /\d/.test(contrasena);
@@ -80,6 +116,7 @@ const verificarContrasena = () =>
             verificarContrasena2();
         }
     }
+    document.getElementById('verContrasena').classList.add("verContrasenaAcomodado");
 }
 
 const verificarContrasena2 = () =>
@@ -101,17 +138,18 @@ const verificarContrasena2 = () =>
         inputContrasena2.classList.add("inputValido");
         inputContrasena2.classList.remove("inputInvalido");
     }
+    document.getElementById('verContrasena2').classList.add("verContrasenaAcomodado");
 }
     
 
 
 if (window.location.pathname.endsWith('index.html'))
 {
-    formulario.addEventListener('submit', function(){
+    formulario.addEventListener('submit', function(event){
     const alerta = document.getElementById('alerta');
     alerta.classList.remove("hidden")
-    event.preventDefault();
     verificarNombre(); verificarEmail(); verificarContrasena(); verificarContrasena2();
+    event.preventDefault();
     if (!nombreValido || !emailValido || !contrasenaValida || !contrasenasCoinciden)
     {
         alerta.classList.add("alert-danger");
@@ -123,21 +161,22 @@ if (window.location.pathname.endsWith('index.html'))
         alerta.classList.add("alert-success");
         alerta.classList.remove("alert-danger");
         alerta.innerHTML = "¡Te has registrado correctamente!";
-        if (localStorage.getItem("usuarios") == null)
+        if (objetos == null) 
         {
-            var usuarios = [];
+            objetos = [];
         }
         let usuario = {
             Nombre:inputNombre.value,
             Email:inputEmail.value,
             Contrasena:inputContrasena.value
         }
-        usuarios.push(usuario);
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        
+        objetos.push(usuario);
+        localStorage.setItem("usuarios", JSON.stringify(objetos));
+        verUsuarios();
     }
     
 })
+
 }
 
 const cambiarModo = () =>{
@@ -155,9 +194,10 @@ const cambiarModo = () =>{
     body.classList.toggle('body-oscuro');
     columna.classList.toggle('columna-oscuro');
     verUsuarios.classList.toggle('color-blanco')
-    document.querySelectorAll("label").forEach(elemento => {
-        elemento.classList.toggle("label-oscuro");
-    });
+    let items = document.getElementsByClassName("label");
+    for (let i=0; i < items.length; i++) {
+        items[i].classList.toggle("label-oscuro");
+    }
     document.querySelectorAll("aviso").forEach(elemento => {
         elemento.classList.toggle("aviso-oscuro");
     });
@@ -165,11 +205,20 @@ const cambiarModo = () =>{
 }
 
 
-if (window.location.pathname.endsWith('verUsuarios.html'))
-{
-    const lista = localStorage.getItem("usuarios");
-    lista.forEach(element=>{
-        console.log(element.Nombre);
+const verContrasena = (id, numeroIcono) =>{
+    id = document.getElementById(id);
+    numeroIcono = document.getElementById(numeroIcono);
+    console.log(numeroIcono);
+    if (id.type === "password")
+    {
+        id.type ="text";
+        numeroIcono.classList.add("bi-eye-slash");
+        numeroIcono.classList.remove("bi-eye");
     }
-    )
+    else
+    {
+        id.type= "password";
+        numeroIcono.classList.remove("bi-eye-slash");
+        numeroIcono.classList.add("bi-eye");
+    }
 }
