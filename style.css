@@ -125,7 +125,6 @@ button{
 }
 .labelForm{
     font-weight: bolder;
-    font-size:120%;
     margin-bottom: .5rem;
 }
 .contrasena{
@@ -210,4 +209,13 @@ button{
 .usuario{
     margin-bottom:7%;
     margin-top:5%;
+}
+
+@media (max-width:320px){
+    p{
+        font-size:70%;
+    }
+    .h1{
+        font-size:2rem;
+    }
 }

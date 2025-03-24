@@ -184,7 +184,6 @@ const cambiarModo = () =>{
     const titulo = document.getElementById('titulo');
     const icon = document.getElementById('icon');
     const submit = document.getElementById('submit');
-    const columna = document.getElementById('columna');
     const verUsuarios = document.getElementById('verUsuarios');
     titulo.classList.toggle('label-oscuro');
     submit.classList.toggle('submit-oscuro');
@@ -192,9 +191,11 @@ const cambiarModo = () =>{
     icon.classList.toggle('bi-moon-fill');
     icon.classList.toggle('color-blanco');
     body.classList.toggle('body-oscuro');
-    columna.classList.toggle('columna-oscuro');
     verUsuarios.classList.toggle('color-blanco')
     let items = document.getElementsByClassName("label");
+    document.querySelectorAll("columna").forEach(elemento =>{
+        elemento.classList.toggle('columna-oscuro');
+    })
     for (let i=0; i < items.length; i++) {
         items[i].classList.toggle("label-oscuro");
     }
