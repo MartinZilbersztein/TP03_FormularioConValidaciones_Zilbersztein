@@ -22,7 +22,7 @@
                     <div id="alerta" class="alert hidden" role="alert"></div>
                     <div class="mb-3">
                         <label class="labelForm">Nombre completo</label>
-                        <input type="nombre" class="unInput" id="nombre" aria-describedby="emailHelp" onChange=verificarNombre()>
+                        <input type="nombre" class="unInput" id="nombre" aria-describedby="emailHelp" onInput=verificarNombre()>
                         <p class="aviso" id="respuestaNombre"></p>
                     </div>
                     <div class="mb-3">
@@ -43,7 +43,7 @@
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="labelForm">Confirmar contraseña</label>
                         <div class="contrasena">
-                            <input type="password" class="unInput" id="contrasena2" onChange=verificarContrasena2()>
+                            <input type="password" class="unInput" id="contrasena2" onInput=verificarContrasena2()>
                             <div id="verContrasena2" class="verContrasena">
                                 <i id="icono2" class="bi bi-eye" onClick="verContrasena('contrasena2', id)"></i>
                             </div>

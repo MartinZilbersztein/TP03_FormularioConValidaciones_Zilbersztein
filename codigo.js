@@ -98,7 +98,7 @@ const verificarContrasena = () =>
 {
     const feedbackElement = document.getElementById('respuestaContrasena');
     contrasena = inputContrasena.value;
-    if (contrasena.length < 8 || !contieneNumero(contrasena) || !contieneLetra(contrasena))
+    if (contrasena.length < 8 || !contieneNumero(contrasena) || !contieneLetra(contrasena) || (contrasena.length == 0 && contrasena2.length == 0))
     {
         feedbackElement.textContent = "La contraseña debe contener, al menos, ocho caracteres, un número y una letra."
         contrasenaValida = false;
@@ -124,7 +124,7 @@ const verificarContrasena2 = () =>
     contrasena = inputContrasena.value;
     contrasena2 = inputContrasena2.value;
     const feedbackElement = document.getElementById('respuestaContrasena2');
-    if ((contrasena != null && contrasena2 != null) && contrasena != contrasena2)
+    if ((contrasena != null && contrasena2 != null) && contrasena != contrasena2 || (contrasena.length == 0 && contrasena2.length == 0))
     {
         feedbackElement.textContent = "Las contraseñas no coinciden.";
         contrasenasCoinciden = false;
@@ -185,17 +185,16 @@ const cambiarModo = () =>{
     const icon = document.getElementById('icon');
     const submit = document.getElementById('submit');
     const verUsuarios = document.getElementById('verUsuarios');
+    const columna = document.getElementById('columna');
     titulo.classList.toggle('label-oscuro');
     submit.classList.toggle('submit-oscuro');
     icon.classList.toggle('bi-brightness-high-fill');
     icon.classList.toggle('bi-moon-fill');
     icon.classList.toggle('color-blanco');
     body.classList.toggle('body-oscuro');
-    verUsuarios.classList.toggle('color-blanco')
+    columna.classList.toggle("columna-oscuro");
+    verUsuarios.classList.toggle('color-blanco');
     let items = document.getElementsByClassName("label");
-    document.querySelectorAll("columna").forEach(elemento =>{
-        elemento.classList.toggle('columna-oscuro');
-    })
     for (let i=0; i < items.length; i++) {
         items[i].classList.toggle("label-oscuro");
     }
